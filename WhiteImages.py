@@ -122,16 +122,16 @@ plt.show()
 
 # Plot the linearized average channel values vs exposure time
 
-linearized_B = linregress(np.log(exposure_times), np.log(mean_Bs))
-B_g_value = 1/linearized_B.slope
-modified_mean_Bs = [math.pow(x, (B_g_value)) for x in mean_Bs]
-plt.plot(exposure_times, modified_mean_Bs, color="blue", marker="o")
-b_g_legend = mpatches.Patch(color='blue', label='$g_B = {0:.3f}$'.format(B_g_value))
-plt.legend(handles=[b_g_legend])
-plt.title("Linearized blue channel values vs. exposure time")
+linearized_R = linregress(np.log(exposure_times), np.log(mean_Rs))
+R_g_value = 1/linearized_R.slope
+modified_mean_Rs = [math.pow(x, (R_g_value)) for x in mean_Rs]
+plt.plot(exposure_times, modified_mean_Rs, color="red", marker="o")
+r_g_legend = mpatches.Patch(color='red', label='$g_R = {0:.3f}$'.format(R_g_value))
+plt.legend(handles=[r_g_legend])
+plt.title("Linearized red channel values vs. exposure time")
 plt.xlabel("Exposure time T (seconds)")
-plt.ylabel("Blue channel $B'^{g_B}$(T)")
-# plt.savefig("Blue channel Bg(T).JPG", dpi=200)
+plt.ylabel("Red channel $B'^{g_R}$(T)")
+# plt.savefig("Red channel Bg(T).JPG", dpi=200)
 plt.show()
 
 linearized_G = linregress(np.log(exposure_times), np.log(mean_Gs))
@@ -146,16 +146,16 @@ plt.ylabel("Green channel $B'^{g_G}$(T)")
 # plt.savefig("Green channel Bg(T).JPG", dpi=200)
 plt.show()
 
-linearized_R = linregress(np.log(exposure_times), np.log(mean_Rs))
-R_g_value = 1/linearized_R.slope
-modified_mean_Rs = [math.pow(x, (R_g_value)) for x in mean_Rs]
-plt.plot(exposure_times, modified_mean_Rs, color="red", marker="o")
-r_g_legend = mpatches.Patch(color='red', label='$g_R = {0:.3f}$'.format(R_g_value))
-plt.legend(handles=[r_g_legend])
-plt.title("Linearized red channel values vs. exposure time")
+linearized_B = linregress(np.log(exposure_times), np.log(mean_Bs))
+B_g_value = 1/linearized_B.slope
+modified_mean_Bs = [math.pow(x, (B_g_value)) for x in mean_Bs]
+plt.plot(exposure_times, modified_mean_Bs, color="blue", marker="o")
+b_g_legend = mpatches.Patch(color='blue', label='$g_B = {0:.3f}$'.format(B_g_value))
+plt.legend(handles=[b_g_legend])
+plt.title("Linearized blue channel values vs. exposure time")
 plt.xlabel("Exposure time T (seconds)")
-plt.ylabel("Red channel $B'^{g_R}$(T)")
-# plt.savefig("Red channel Bg(T).JPG", dpi=200)
+plt.ylabel("Blue channel $B'^{g_B}$(T)")
+# plt.savefig("Blue channel Bg(T).JPG", dpi=200)
 plt.show()
 
 # Export the serialized linear regression results for use in a different python file
